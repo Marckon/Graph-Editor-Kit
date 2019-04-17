@@ -1,22 +1,38 @@
 import React, {Component} from 'react';
-import {Stage, Layer, Image, Text} from 'react-konva';
+import {Stage, Layer, Image, Text, Group} from 'react-konva';
 
 class CanvasScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageObj: null
+      imageObj: null,
+      imageHeight: 0,
+      imageWidth: 0,
+      imagePosition: [0, 0]
     }
   };
 
   loadImage = () => {
     const imageObj = new window.Image();
     imageObj.src = this.props.imageUrl;
-    imageObj.onload = () =>{
+    imageObj.onload = () => {
+      console.log(imageObj.width, imageObj.height)
       this.setState({
-        imageObj
+        imageObj,
+        imageHeight: imageObj.height,
+        imageWidth: imageObj.width,
       })
     }
+  };
+
+  onDrag = (pos) => {
+    this.setState({
+      imagePosition: [pos.x, pos.y]
+    });
+    return {
+      x: pos.x,
+      y: pos.y
+    };
   };
 
   componentDidUpdate(prevProps) {
@@ -35,13 +51,19 @@ class CanvasScreen extends Component {
       <div className={className}>
         <Stage width={canvasWidth} height={canvasHeight}>
           <Layer>
-            <Image
-              width={canvasWidth}
-              height={canvasHeight}
-              image={this.state.imageObj}
-              x={0}
-              y={0}
-            />
+            <Group
+              draggable={true}
+              dragBoundFunc={this.onDrag}
+              x={this.state.imagePosition[0]}
+              y={this.state.imagePosition[1]}
+            >
+              <Image
+                width={this.state.imageWidth}
+                height={this.state.imageHeight}
+                image={this.state.imageObj}
+              />
+            </Group>
+
           </Layer>
           <Layer>
             <Text
