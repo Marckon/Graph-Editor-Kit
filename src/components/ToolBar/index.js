@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
+import Slider from 'antd/lib/slider';
+import InputNumber from 'antd/lib/input-number';
+import {ChromePicker} from 'react-color';
+
+const MAX_FONTSIZE = 800;
+const MIN_FONTSIZE = 1;
 
 class ToolBar extends Component {
   constructor(props) {
@@ -16,11 +22,11 @@ class ToolBar extends Component {
     const formItemLayout = {
       labelCol: {
         xs: {span: 24},
-        sm: {span: 8},
+        sm: {span: 6},
       },
       wrapperCol: {
         xs: {span: 24},
-        sm: {span: 16},
+        sm: {span: 18},
       },
     };
 
@@ -50,6 +56,40 @@ class ToolBar extends Component {
                   size={"large"}
                   placeholder={"input text"}
                   onChange={e => this.props.onTextChange(e.target.value)}
+                />
+              )
+            }
+          </Item>
+          <Item
+            label={"字体大小"}
+          >
+            {
+              getFieldDecorator('fontSize', {})(
+                <div>
+                  <InputNumber
+                    min={MIN_FONTSIZE}
+                    max={MAX_FONTSIZE}
+                    onChange={this.props.onFontSizeChange}
+                    value={this.props.fontSize}
+                  />
+                  <Slider
+                    min={MIN_FONTSIZE}
+                    max={MAX_FONTSIZE}
+                    onChange={this.props.onFontSizeChange}
+                    value={this.props.fontSize}
+                  />
+                </div>
+              )
+            }
+          </Item>
+          <Item
+            label={"文字颜色"}
+          >
+            {
+              getFieldDecorator('fontColor',{})(
+                <ChromePicker
+                  color={this.props.fontColor}
+                  onChange={this.props.onFontColorChange}
                 />
               )
             }

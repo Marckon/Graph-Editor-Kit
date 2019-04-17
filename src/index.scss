@@ -1,21 +1,25 @@
 @import "~antd/dist/antd.css";
 
-.main{
-  width:100vw;
-  height:100vh;
+.main {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.canvas-screen{
+
+.canvas-screen {
   width: 600px;
-  height:600px;
+  height: 600px;
   background-color: #e8e8e8;
 }
-.toolbar{
-  height:600px;
+
+.toolbar {
+  height: 600px;
   display: flex;
+  width: 600px;
   justify-content: center;
   align-items: start;
   overflow: hidden;
+  margin-left: 10px;
 }

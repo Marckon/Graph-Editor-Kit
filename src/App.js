@@ -11,7 +11,9 @@ class App extends Component {
       imageUrl: '',
       canvasWidth: 600,
       canvasHeight: 600,
-      text: ''
+      text: '',
+      fontSize: 36,
+      fontColor: "#000000",
     }
   }
 
@@ -27,6 +29,18 @@ class App extends Component {
     })
   };
 
+  handleFontSizeChange = newFontSize => {
+    this.setState({
+      fontSize: newFontSize
+    })
+  };
+
+  handleFontColorChange = (color,event)=>{
+    this.setState({
+      fontColor:color.hex
+    })
+  };
+
   render() {
     return (
       <div className={'main'}>
@@ -38,6 +52,8 @@ class App extends Component {
           className={'toolbar'}
           onImageChange={this.handleImageChange}
           onTextChange={this.handleTextChange}
+          onFontSizeChange={this.handleFontSizeChange}
+          onFontColorChange={this.handleFontColorChange}
           {...this.state}
         />
       </div>

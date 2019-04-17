@@ -83,6 +83,8 @@ class CanvasScreen extends Component {
             >
               <Text
                 text={text}
+                fontSize={this.props.fontSize}
+                fill={this.props.fontColor}
               />
             </Group>
           </Layer>
