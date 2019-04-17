@@ -3,6 +3,9 @@ import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import Slider from 'antd/lib/slider';
 import InputNumber from 'antd/lib/input-number';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Button from 'antd/lib/button';
 import {ChromePicker} from 'react-color';
 
 const MAX_FONTSIZE = 800;
@@ -33,6 +36,16 @@ class ToolBar extends Component {
     return (
       <div className={this.props.className}>
         <Form {...formItemLayout}>
+          <Item>
+            <Row>
+              <Col span={12}>
+                <Button type={'primary'}>下载</Button>
+              </Col>
+              <Col span={12}>
+                <Button>上传</Button>
+              </Col>
+            </Row>
+          </Item>
           <Item
             label={"图片链接"}
           >

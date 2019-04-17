@@ -17,7 +17,7 @@ class CanvasScreen extends Component {
     const imageObj = new window.Image();
     imageObj.src = this.props.imageUrl;
     imageObj.onload = () => {
-      console.log(imageObj.width, imageObj.height)
+      console.log(imageObj.width, imageObj.height);
       this.setState({
         imageObj,
         imageHeight: imageObj.height,
@@ -74,7 +74,6 @@ class CanvasScreen extends Component {
                 image={this.state.imageObj}
               />
             </Group>
-
           </Layer>
           <Layer>
             <Group

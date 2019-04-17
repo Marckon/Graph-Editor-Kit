@@ -19,7 +19,6 @@
   display: flex;
   width: 600px;
   justify-content: center;
-  align-items: start;
-  overflow: hidden;
-  margin-left: 10px;
+  align-items: center;
+  flex-direction: column;
 }
