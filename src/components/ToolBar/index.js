@@ -9,7 +9,9 @@ class ToolBar extends Component{
   render(){
     return (
       <div {...this.props}>
-
+        <form action="">
+          <input type="text" placeholder={"paste image url here"} onChange={e=>this.props.onImageChange(e.target.value)}/>
+        </form>
       </div>
     )
   }

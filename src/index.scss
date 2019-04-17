@@ -1,0 +1,36 @@
+/*
+.container{
+  width:500px;
+  height:500px;
+  border: 1px solid #ccc;
+  display: flex;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  height:500px;
+  div{
+    margin: 5px 5px;
+    border-bottom: #ccc 1px solid;
+    padding-bottom: 8px;
+  }
+}*/
+
+.main{
+  width:100vw;
+  height:100vh;
+  display: flex;
+}
+.canvas-screen{
+  width: 80vw;
+  height:100vh;
+  background-color: #e8e8e8;
+}
+.toolbar{
+  flex:1;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+}

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './index.scss';
 import CanvasScreen from './components/CanvasScreen';
 import ToolBar from './components/ToolBar';
+
 /*class App extends Component {
   constructor(props) {
     super(props);
@@ -116,12 +117,33 @@ import ToolBar from './components/ToolBar';
 }*/
 
 
-class App extends Component{
-  render(){
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageUrl: '',
+      canvasWidth: 800,
+      canvasHeight: 800,
+    }
+  }
+
+  handleImageChange = (url) => {
+    this.setState({
+      imageUrl:url
+    })
+  };
+
+  render() {
     return (
       <div className={'main'}>
-        <CanvasScreen className={'canvas-screen'}/>
-        <ToolBar className={'toolbar'}/>
+        <CanvasScreen
+          className={'canvas-screen'}
+          {...this.state}
+        />
+        <ToolBar
+          className={'toolbar'}
+          onImageChange={this.handleImageChange}
+        />
       </div>
     )
   }
