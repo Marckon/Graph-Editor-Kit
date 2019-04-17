@@ -8,7 +8,8 @@ class CanvasScreen extends Component {
       imageObj: null,
       imageHeight: 0,
       imageWidth: 0,
-      imagePosition: [0, 0]
+      imagePosition: [0, 0],
+      textPosition: [0, 0],
     }
   };
 
@@ -25,7 +26,7 @@ class CanvasScreen extends Component {
     }
   };
 
-  onDrag = (pos) => {
+  onImageDrag = (pos) => {
     this.setState({
       imagePosition: [pos.x, pos.y]
     });
@@ -33,6 +34,16 @@ class CanvasScreen extends Component {
       x: pos.x,
       y: pos.y
     };
+  };
+
+  onTextDrag = pos => {
+    this.setState({
+      textPosition: [pos.x, pos.y]
+    });
+    return {
+      x: pos.x,
+      y: pos.y
+    }
   };
 
   componentDidUpdate(prevProps) {
@@ -53,7 +64,7 @@ class CanvasScreen extends Component {
           <Layer>
             <Group
               draggable={true}
-              dragBoundFunc={this.onDrag}
+              dragBoundFunc={this.onImageDrag}
               x={this.state.imagePosition[0]}
               y={this.state.imagePosition[1]}
             >
@@ -66,9 +77,14 @@ class CanvasScreen extends Component {
 
           </Layer>
           <Layer>
-            <Text
-              text={text}
-            />
+            <Group
+              draggable={true}
+              dragBoundFunc={this.onTextDrag}
+            >
+              <Text
+                text={text}
+              />
+            </Group>
           </Layer>
         </Stage>
       </div>
