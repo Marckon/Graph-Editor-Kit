@@ -46,7 +46,7 @@ class CanvasScreen extends Component {
   }
 
   render() {
-    const {canvasHeight, canvasWidth, imageUrl, className} = this.props;
+    const {canvasHeight, canvasWidth, text, className} = this.props;
     return (
       <div className={className}>
         <Stage width={canvasWidth} height={canvasHeight}>
@@ -67,7 +67,7 @@ class CanvasScreen extends Component {
           </Layer>
           <Layer>
             <Text
-              text={imageUrl}
+              text={text}
             />
           </Layer>
         </Stage>

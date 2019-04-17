@@ -124,12 +124,19 @@ class App extends Component {
       imageUrl: '',
       canvasWidth: 800,
       canvasHeight: 800,
+      text: ''
     }
   }
 
   handleImageChange = (url) => {
     this.setState({
-      imageUrl:url
+      imageUrl: url
+    })
+  };
+
+  handleTextChange = text => {
+    this.setState({
+      text
     })
   };
 
@@ -143,6 +150,7 @@ class App extends Component {
         <ToolBar
           className={'toolbar'}
           onImageChange={this.handleImageChange}
+          onTextChange={this.handleTextChange}
         />
       </div>
     )
