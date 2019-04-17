@@ -46,6 +46,17 @@ class CanvasScreen extends Component {
     }
   };
 
+  // 被父组件调用的方法
+  // 注意：跨域的图片将无法下载
+  downloadImage = () => {
+    console.log(this.stageRef);
+    const a = document.createElement('a');
+    a.href = this.stageRef.getStage().toDataURL();
+    a.download = `看图${new Date().getTime()}.png`;
+
+    a.click();
+  };
+
   componentDidUpdate(prevProps) {
     if (prevProps.imageUrl !== this.props.imageUrl) {
       this.loadImage();
@@ -54,13 +65,14 @@ class CanvasScreen extends Component {
 
   componentDidMount() {
     this.loadImage();
+    this.props.onRef(this);
   }
 
   render() {
     const {canvasHeight, canvasWidth, text, className} = this.props;
     return (
       <div className={className}>
-        <Stage width={canvasWidth} height={canvasHeight}>
+        <Stage width={canvasWidth} height={canvasHeight} ref={node => this.stageRef = node}>
           <Layer>
             <Group
               draggable={true}

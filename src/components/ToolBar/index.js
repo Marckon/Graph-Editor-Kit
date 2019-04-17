@@ -39,7 +39,12 @@ class ToolBar extends Component {
           <Item>
             <Row>
               <Col span={12}>
-                <Button type={'primary'}>下载</Button>
+                <Button
+                  type={'primary'}
+                  onClick={this.props.onDownload}
+                >
+                  下载
+                </Button>
               </Col>
               <Col span={12}>
                 <Button>上传</Button>
@@ -99,7 +104,7 @@ class ToolBar extends Component {
             label={"文字颜色"}
           >
             {
-              getFieldDecorator('fontColor',{})(
+              getFieldDecorator('fontColor', {})(
                 <ChromePicker
                   color={this.props.fontColor}
                   onChange={this.props.onFontColorChange}

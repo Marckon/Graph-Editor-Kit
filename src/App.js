@@ -35,10 +35,18 @@ class App extends Component {
     })
   };
 
-  handleFontColorChange = (color,event)=>{
+  handleFontColorChange = (color, event) => {
     this.setState({
-      fontColor:color.hex
+      fontColor: color.hex
     })
+  };
+
+  handleDownload = () => {
+    this.child.downloadImage()
+  };
+
+  onRef = ref => {
+    this.child = ref;
   };
 
   render() {
@@ -46,6 +54,8 @@ class App extends Component {
       <div className={'main'}>
         <CanvasScreen
           className={'canvas-screen'}
+          // 双向绑定
+          onRef={this.onRef}
           {...this.state}
         />
         <ToolBar
@@ -54,6 +64,7 @@ class App extends Component {
           onTextChange={this.handleTextChange}
           onFontSizeChange={this.handleFontSizeChange}
           onFontColorChange={this.handleFontColorChange}
+          onDownload={this.handleDownload}
           {...this.state}
         />
       </div>
