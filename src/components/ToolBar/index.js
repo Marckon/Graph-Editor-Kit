@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
 
 class ToolBar extends Component{
   constructor(props){
@@ -8,10 +10,10 @@ class ToolBar extends Component{
 
   render(){
     return (
-      <div {...this.props}>
-        <form action="">
-          <input type="text" placeholder={"paste image url here"} onChange={e=>this.props.onImageChange(e.target.value)}/>
-        </form>
+      <div className={this.props.className}>
+        <Form action="">
+          <Input type="text" placeholder={"paste image url here"} onChange={e=>this.props.onImageChange(e.target.value)}/>
+        </Form>
       </div>
     )
   }
