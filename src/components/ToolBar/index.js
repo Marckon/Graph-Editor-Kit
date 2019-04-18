@@ -50,6 +50,7 @@ class ToolBar extends Component {
                 <Upload
                   beforeUpload={this.props.onLocalFileUpload}
                   accept={"image/*"}
+                  fileList={[]}
                 >
                   <Button>
                     <Icon type={"upload"}/>
