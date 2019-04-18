@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Stage, Layer, Image, Text, Group} from 'react-konva';
+import {Stage, Layer, Image, Text, Group, Rect} from 'react-konva';
 
 class CanvasScreen extends Component {
   constructor(props) {
@@ -25,7 +25,12 @@ class CanvasScreen extends Component {
   // 被父组件调用的方法
   // 注意：跨域的图片将无法下载
   downloadImage = () => {
-    console.log(this.stageRef);
+      /*console.log(this.stageRef.getStage().scale());
+      this.stageRef.getStage().scale({
+        x: 1 / 3,
+        y: 1 / 3
+      });
+      this.stageRef.getStage().draw()*/
     const a = document.createElement('a');
     a.href = this.stageRef.getStage().toDataURL();
     a.download = `banner-${new Date().getTime()}.png`;
@@ -71,6 +76,13 @@ class CanvasScreen extends Component {
                 image={this.state.imageObj}
               />
             </Group>
+          </Layer>
+          <Layer>
+            <Rect
+              width={canvasWidth}
+              height={canvasHeight}
+              fill={this.props.wrapperColor}
+            />
           </Layer>
           <Layer>
             <Group>

@@ -11,6 +11,7 @@ const IMAGE_HEIGHT = 270;
 const FONT_SIZE = 60;
 const FONT_COLOR = '#ffffff';
 const TEXT_MAXLENGTH = 12;
+const WRAPPER_COLOR = 'rgba(0,0,0,0.5)';
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends Component {
       fontSize: FONT_SIZE,
       fontColor: FONT_COLOR,
       textMaxLength: TEXT_MAXLENGTH,
+      wrapperColor:WRAPPER_COLOR,
       text: ''
     }
   }
