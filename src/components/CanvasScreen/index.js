@@ -25,14 +25,9 @@ class CanvasScreen extends Component {
   // 被父组件调用的方法
   // 注意：跨域的图片将无法下载
   downloadImage = () => {
-      /*console.log(this.stageRef.getStage().scale());
-      this.stageRef.getStage().scale({
-        x: 1 / 3,
-        y: 1 / 3
-      });
-      this.stageRef.getStage().draw()*/
+
     const a = document.createElement('a');
-    a.href = this.stageRef.getStage().toDataURL();
+    a.href = this.actualSizeStage.getStage().toDataURL();
     a.download = `banner-${new Date().getTime()}.png`;
 
     a.click();
@@ -61,7 +56,7 @@ class CanvasScreen extends Component {
   }
 
   render() {
-    const {canvasHeight, canvasWidth, text, className, imageWidth, imageHeight, fontSize, fontColor} = this.props;
+    const {canvasHeight, canvasWidth, text, className, imageWidth, imageHeight, fontSize, fontColor, baseScale} = this.props;
     return (
       <div className={className}>
         <Stage width={canvasWidth} height={canvasHeight} ref={node => this.stageRef = node}>
@@ -99,6 +94,43 @@ class CanvasScreen extends Component {
             </Group>
           </Layer>
         </Stage>
+        {/* 下载时读取的stage */}
+        <div style={{display:'none'}}>
+          <Stage width={canvasWidth/baseScale} height={canvasHeight/baseScale} ref={node => this.actualSizeStage = node}>
+            <Layer>
+              <Group
+                x={0}
+                y={0}
+              >
+                <Image
+                  width={imageWidth/baseScale}
+                  height={imageHeight/baseScale}
+                  image={this.state.imageObj}
+                />
+              </Group>
+            </Layer>
+            <Layer>
+              <Rect
+                width={canvasWidth/baseScale}
+                height={canvasHeight/baseScale}
+                fill={this.props.wrapperColor}
+              />
+            </Layer>
+            <Layer>
+              <Group>
+                <Text
+                  x={this.state.textX/baseScale}
+                  y={this.state.textY/baseScale}
+                  text={text}
+                  fontSize={fontSize/baseScale}
+                  fill={fontColor}
+                  align={"center"}
+                  verticalAlign={"middle"}
+                />
+              </Group>
+            </Layer>
+          </Stage>
+        </div>
       </div>
     )
   }

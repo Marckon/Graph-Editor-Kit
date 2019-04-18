@@ -4,11 +4,12 @@ import CanvasScreen from './components/CanvasScreen';
 import ToolBar from './components/ToolBar';
 import message from 'antd/lib/message';
 
-const CANVAS_WIDTH = 630;
-const CANVAS_HEIGHT = 270;
-const IMAGE_WIDTH = 630;
-const IMAGE_HEIGHT = 270;
-const FONT_SIZE = 60;
+const BASE_SCALE = 2;
+const CANVAS_WIDTH = 310 * BASE_SCALE;
+const CANVAS_HEIGHT = 90 * BASE_SCALE;
+const IMAGE_WIDTH = 310 * BASE_SCALE;
+const IMAGE_HEIGHT = 90 * BASE_SCALE;
+const FONT_SIZE = 20 * BASE_SCALE;
 const FONT_COLOR = '#ffffff';
 const TEXT_MAXLENGTH = 12;
 const WRAPPER_COLOR = 'rgba(0,0,0,0.5)';
@@ -25,7 +26,8 @@ class App extends Component {
       fontSize: FONT_SIZE,
       fontColor: FONT_COLOR,
       textMaxLength: TEXT_MAXLENGTH,
-      wrapperColor:WRAPPER_COLOR,
+      wrapperColor: WRAPPER_COLOR,
+      baseScale: BASE_SCALE,
       text: ''
     }
   }
