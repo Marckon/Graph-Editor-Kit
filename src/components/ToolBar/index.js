@@ -12,7 +12,7 @@ import {ChromePicker} from 'react-color';
 
 const MAX_FONTSIZE = 800;
 const MIN_FONTSIZE = 1;
-const MAX_IMAGEZOOM = 500;
+const MAX_IMAGEZOOM = 200;
 const MIN_IMAGEZOOM = 0;
 
 class ToolBar extends Component {
@@ -56,6 +56,7 @@ class ToolBar extends Component {
               <Col span={8}>
                 <Upload
                   beforeUpload={this.props.onLocalFileUpload}
+                  accept={"image/*"}
                 >
                   <Button>
                     <Icon type={"upload"}/>

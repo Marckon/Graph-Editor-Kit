@@ -51,8 +51,9 @@ class App extends Component {
   };
 
   // 本地文件上传，不进行网络传输
-  handleLocalFileUpload = file => {
+  handleLocalFileUpload = (file,fileList) => {
     console.log(file);
+    fileList=[];
     if (file.type.split("/")[0] !== "image") {
       message.error("您上传的不是图片类型文件");
       return;
