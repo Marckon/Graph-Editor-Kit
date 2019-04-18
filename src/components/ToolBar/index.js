@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
-import Slider from 'antd/lib/slider';
-import InputNumber from 'antd/lib/input-number';
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import Button from 'antd/lib/button';
 import Icon from 'antd/lib/icon';
 import Upload from 'antd/lib/upload';
-import {ChromePicker} from 'react-color';
 
-const MAX_FONTSIZE = 800;
-const MIN_FONTSIZE = 1;
 
 class ToolBar extends Component {
   constructor(props) {
@@ -54,6 +49,7 @@ class ToolBar extends Component {
               <Col span={8}>
                 <Upload
                   beforeUpload={this.props.onLocalFileUpload}
+                  accept={"image/*"}
                 >
                   <Button>
                     <Icon type={"upload"}/>
