@@ -63,10 +63,15 @@ class ToolBar extends Component {
             label={"输入文字"}
           >
             {
-              getFieldDecorator('text', {})(
+              getFieldDecorator('text', {
+                rules:[{
+                  max:this.props.textMaxLength
+                }]
+              })(
                 <Input
                   type={"text"}
                   size={"large"}
+                  maxLength={this.props.textMaxLength}
                   placeholder={"input text"}
                   onChange={e => this.props.onTextChange(e.target.value)}
                 />

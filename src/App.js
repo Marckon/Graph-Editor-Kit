@@ -8,6 +8,9 @@ const CANVAS_WIDTH = 630;
 const CANVAS_HEIGHT = 270;
 const IMAGE_WIDTH = 630;
 const IMAGE_HEIGHT = 270;
+const FONT_SIZE = 60;
+const FONT_COLOR = '#ffffff';
+const TEXT_MAXLENGTH = 12;
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +21,9 @@ class App extends Component {
       canvasHeight: CANVAS_HEIGHT,
       imageWidth: IMAGE_WIDTH,
       imageHeight: IMAGE_HEIGHT,
+      fontSize: FONT_SIZE,
+      fontColor: FONT_COLOR,
+      textMaxLength: TEXT_MAXLENGTH,
       text: ''
     }
   }

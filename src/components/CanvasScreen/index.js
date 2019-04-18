@@ -6,6 +6,8 @@ class CanvasScreen extends Component {
     super(props);
     this.state = {
       imageObj: null,
+      textX: 0,
+      textY: 0,
     }
   };
 
@@ -31,9 +33,20 @@ class CanvasScreen extends Component {
     a.click();
   };
 
+  // 更改文本位置，使其居中
+  changeTextPosition = () => {
+    this.setState({
+      textX: (this.props.canvasWidth - this.textRef.getTextWidth()) / 2,
+      textY: (this.props.canvasHeight - this.textRef.getTextHeight()) / 2
+    })
+  };
+
   componentDidUpdate(prevProps) {
     if (prevProps.imageUrl !== this.props.imageUrl) {
       this.loadImage();
+    }
+    if (prevProps.text !== this.props.text) {
+      this.changeTextPosition();
     }
   }
 
@@ -43,7 +56,7 @@ class CanvasScreen extends Component {
   }
 
   render() {
-    const {canvasHeight, canvasWidth, text, className, imageWidth, imageHeight} = this.props;
+    const {canvasHeight, canvasWidth, text, className, imageWidth, imageHeight, fontSize, fontColor} = this.props;
     return (
       <div className={className}>
         <Stage width={canvasWidth} height={canvasHeight} ref={node => this.stageRef = node}>
@@ -62,7 +75,14 @@ class CanvasScreen extends Component {
           <Layer>
             <Group>
               <Text
+                x={this.state.textX}
+                y={this.state.textY}
                 text={text}
+                fontSize={fontSize}
+                fill={fontColor}
+                align={"center"}
+                verticalAlign={"middle"}
+                ref={node => this.textRef = node}
               />
             </Group>
           </Layer>
