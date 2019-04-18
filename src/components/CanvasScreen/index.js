@@ -63,23 +63,11 @@ class CanvasScreen extends Component {
 
   // 被父组件调用的方法
   zoomImage = percent => {
-    if (percent < 0) {
-      this.setState({
-        imageHeight: this.state.initialImageHeight / (-percent / 100),
-        imageWidth: this.state.initialImageWidth / (-percent / 100)
-      });
-    }
-    else if (percent > 0) {
-      this.setState({
-        imageHeight: this.state.initialImageHeight * percent / 100,
-        imageWidth: this.state.initialImageWidth * percent / 100
-      })
-    } else {
-      this.setState({
-        imageHeight: this.state.initialImageHeight,
-        imageWidth: this.state.initialImageWidth
-      })
-    }
+    let {initialImageHeight, initialImageWidth} = this.state;
+    this.setState({
+      imageWidth: initialImageWidth * percent / 100,
+      imageHeight: initialImageHeight * percent / 100
+    });
   };
 
   componentDidUpdate(prevProps) {

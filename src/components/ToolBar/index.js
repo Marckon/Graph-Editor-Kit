@@ -13,7 +13,7 @@ import {ChromePicker} from 'react-color';
 const MAX_FONTSIZE = 800;
 const MIN_FONTSIZE = 1;
 const MAX_IMAGEZOOM = 500;
-const MIN_IMAGEZOOM = -500;
+const MIN_IMAGEZOOM = 0;
 
 class ToolBar extends Component {
   constructor(props) {
@@ -83,7 +83,7 @@ class ToolBar extends Component {
           >
             {
               getFieldDecorator('imageZoom', {
-                initialValue: 0
+                initialValue: 100
               })(
                 <Slider
                   min={MIN_IMAGEZOOM}

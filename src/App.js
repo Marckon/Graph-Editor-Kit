@@ -64,7 +64,7 @@ class App extends Component {
   };
 
   handleImageZoom = imageZoomPercent => {
-    this.child.zoomImage(imageZoomPercent);
+    this.child.zoomImage(imageZoomPercent)
   };
 
   render() {
