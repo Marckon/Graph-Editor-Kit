@@ -12,6 +12,8 @@ import {ChromePicker} from 'react-color';
 
 const MAX_FONTSIZE = 800;
 const MIN_FONTSIZE = 1;
+const MAX_IMAGEZOOM = 500;
+const MIN_IMAGEZOOM = -500;
 
 class ToolBar extends Component {
   constructor(props) {
@@ -74,6 +76,22 @@ class ToolBar extends Component {
                   placeholder={"paste image url here"}
                   onChange={e => this.props.onImageChange(e.target.value)}
                 />)
+            }
+          </Item>
+          <Item
+            label={"图片缩放"}
+          >
+            {
+              getFieldDecorator('imageZoom', {
+                initialValue: 0
+              })(
+                <Slider
+                  min={MIN_IMAGEZOOM}
+                  max={MAX_IMAGEZOOM}
+                  onChange={this.props.onImageZoom}
+                  tipFormatter={v => `${v}%`}
+                />
+              )
             }
           </Item>
           <Item

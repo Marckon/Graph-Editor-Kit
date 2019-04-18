@@ -63,6 +63,10 @@ class App extends Component {
     return false;
   };
 
+  handleImageZoom = imageZoomPercent => {
+    this.child.zoomImage(imageZoomPercent);
+  };
+
   render() {
     return (
       <div className={'main'}>
@@ -80,6 +84,7 @@ class App extends Component {
           onFontColorChange={this.handleFontColorChange}
           onDownload={this.handleDownload}
           onLocalFileUpload={this.handleLocalFileUpload}
+          onImageZoom={this.handleImageZoom}
           {...this.state}
         />
       </div>

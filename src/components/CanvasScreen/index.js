@@ -8,6 +8,8 @@ class CanvasScreen extends Component {
       imageObj: null,
       imageHeight: 0,
       imageWidth: 0,
+      initialImageHeight: 0,
+      initialImageWidth: 0,
       imagePosition: [0, 0],
       textPosition: [0, 0],
     }
@@ -22,6 +24,8 @@ class CanvasScreen extends Component {
         imageObj,
         imageHeight: imageObj.height,
         imageWidth: imageObj.width,
+        initialImageHeight: imageObj.height,
+        initialImageWidth: imageObj.width
       })
     }
   };
@@ -55,6 +59,27 @@ class CanvasScreen extends Component {
     a.download = `看图${new Date().getTime()}.png`;
 
     a.click();
+  };
+
+  // 被父组件调用的方法
+  zoomImage = percent => {
+    if (percent < 0) {
+      this.setState({
+        imageHeight: this.state.initialImageHeight / (-percent / 100),
+        imageWidth: this.state.initialImageWidth / (-percent / 100)
+      });
+    }
+    else if (percent > 0) {
+      this.setState({
+        imageHeight: this.state.initialImageHeight * percent / 100,
+        imageWidth: this.state.initialImageWidth * percent / 100
+      })
+    } else {
+      this.setState({
+        imageHeight: this.state.initialImageHeight,
+        imageWidth: this.state.initialImageWidth
+      })
+    }
   };
 
   componentDidUpdate(prevProps) {
