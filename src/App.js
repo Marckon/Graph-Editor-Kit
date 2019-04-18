@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './index.scss';
 import CanvasScreen from './components/CanvasScreen';
 import ToolBar from './components/ToolBar';
+import message from 'antd/lib/message';
 
 
 class App extends Component {
@@ -49,6 +50,19 @@ class App extends Component {
     this.child = ref;
   };
 
+  // 本地文件上传，不进行网络传输
+  handleLocalFileUpload = file => {
+    console.log(file);
+    if (file.type.split("/")[0] !== "image") {
+      message.error("您上传的不是图片类型文件");
+      return;
+    }
+    this.setState({
+      imageUrl: URL.createObjectURL(file)
+    });
+    return false;
+  };
+
   render() {
     return (
       <div className={'main'}>
@@ -65,6 +79,7 @@ class App extends Component {
           onFontSizeChange={this.handleFontSizeChange}
           onFontColorChange={this.handleFontColorChange}
           onDownload={this.handleDownload}
+          onLocalFileUpload={this.handleLocalFileUpload}
           {...this.state}
         />
       </div>

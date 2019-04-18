@@ -6,6 +6,8 @@ import InputNumber from 'antd/lib/input-number';
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import Button from 'antd/lib/button';
+import Icon from 'antd/lib/icon';
+import Upload from 'antd/lib/upload';
 import {ChromePicker} from 'react-color';
 
 const MAX_FONTSIZE = 800;
@@ -38,7 +40,7 @@ class ToolBar extends Component {
         <Form {...formItemLayout}>
           <Item>
             <Row>
-              <Col span={12}>
+              <Col span={8}>
                 <Button
                   type={'primary'}
                   onClick={this.props.onDownload}
@@ -46,8 +48,18 @@ class ToolBar extends Component {
                   下载
                 </Button>
               </Col>
-              <Col span={12}>
-                <Button>上传</Button>
+              <Col span={8}>
+                <Button type={"danger"}>上传</Button>
+              </Col>
+              <Col span={8}>
+                <Upload
+                  beforeUpload={this.props.onLocalFileUpload}
+                >
+                  <Button>
+                    <Icon type={"upload"}/>
+                    选择本地文件
+                  </Button>
+                </Upload>
               </Col>
             </Row>
           </Item>
