@@ -9,8 +9,8 @@ class App extends Component {
     super(props);
     this.state = {
       imageUrl: '',
-      canvasWidth: 600,
-      canvasHeight: 600,
+      canvasWidth: 630,
+      canvasHeight: 270,
       text: ''
     }
   }
